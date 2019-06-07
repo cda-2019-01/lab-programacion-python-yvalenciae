@@ -15,3 +15,25 @@
 ## jjj,18
 ##
 ##
+
+
+import csv
+file = open('data.csv', 'r')
+filecsv = csv.reader(file, delimiter= '\t')
+lista = list()
+for x in filecsv:
+  lista.append(x)
+
+cadena = [x[4].split(',') for x in lista]
+
+listascad = [c for lista in cadena for c in lista]
+tabla= [(dato.split(':')) for dato in listascad]
+solo_letras = [l[0:3] for l in listascad]
+letras_unicas = list(set (solo_letras))
+letras_unicas.sort()
+letras_unicas
+
+solucion = [(x,solo_letras.count(x)) for x in letras_unicas]
+
+for tabla in solucion:
+    print ("{},{}".format(tabla[0],tabla[1]))

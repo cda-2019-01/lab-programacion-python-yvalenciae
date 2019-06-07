@@ -10,3 +10,21 @@
 ## E,11
 ## E,16
 ##
+
+
+import csv
+file = open('data.csv', 'r')
+filecsv = csv.reader(file, delimiter= '\t')
+lista = list()
+for x in filecsv:
+  lista.append(x)
+
+solucion= [(i[0],i[4].split(',')) for i in lista]
+solucion
+
+for i in range(len(solucion)):
+    a=0
+    for j in range(len(solucion[i][1])):
+        
+        a += int(solucion[i][1][j][-1])
+    print ("{},{}".format(solucion[i][0],a))

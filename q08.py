@@ -17,3 +17,25 @@
 ## ('9', ['A', 'B', 'C', 'E'])
 ##
 ##
+
+
+import csv
+file = open('data.csv', 'r')
+filecsv = csv.reader(file, delimiter= '\t')
+lista = list()
+for x in filecsv:
+  lista.append(x)
+
+numeros = [(x[1]) for x in lista]
+letras = [str(x[0]) for x in lista]
+entrada = [(x[1],str(x[0])) for x in lista]
+
+Numero_unicos = list(set(numeros))
+Numero_unicos.sort()
+
+solucion = [(x, [y for z,y in entrada if x==z]) for x in Numero_unicos]
+solucion = [(x, sorted(y)) for x,y in solucion]
+
+
+for x in solucion:
+  print (x)

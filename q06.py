@@ -13,3 +13,25 @@
 ## iii,2,7
 ## jjj,2,5
 ##
+
+import csv
+file = open('data.csv', 'r')
+filecsv = csv.reader(file, delimiter= '\t')
+lista = list()
+for x in filecsv:
+  lista.append(x)
+
+cadena = [x[4].split(',') for x in lista]
+
+listascad = [c for lista in cadena for c in lista]
+tabla= [(dato.split(':')) for dato in listascad]
+solo_letras = [l[0:3] for l in listascad]
+letras_unicas = list(set (solo_letras))
+letras_unicas.sort()
+letras_unicas
+
+listagroup = [(tabla[x][0], int(tabla[x][1])) for x in range(len(tabla))]
+
+for l in letras_unicas:
+    maxmin = (l,min([x[1] for x in tabla if x[0]==l]), max([x[1] for x in tabla if x[0]==l]))
+    print ('{},{},{}'.format(maxmin[0],maxmin[1],maxmin[2]))

@@ -11,3 +11,14 @@
 ## E,2,3
 ## E,3,3
 ##
+
+import csv
+file = open('data.csv', 'r')
+filecsv = csv.reader(file, delimiter= '\t')
+lista = list()
+for x in filecsv:
+  lista.append(x)
+
+solucion = [(i[0],len(i[3].split(',')),len(i[4].split(','))) for i in lista]
+for i,j,k in solucion:
+    print ("{},{},{}".format(i,j,k))
